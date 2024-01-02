@@ -1,0 +1,129 @@
+# set the working dir, where all compiled verilog goes
+vlib work
+
+# compile all system verilog modules in mux.sv to working dir
+# could also have multiple verilog files
+vlog part2_sample.sv
+
+#load simulation using mux as the top level simulation module
+vsim part2
+
+#log all signals and add some signals to waveform window
+log {/*}
+# add wave {/*} would add all items in top level simulation module
+
+add wave {/*}
+
+#{ Start
+force Clock 1
+force Reset 1
+run 10 ns
+force Clock 0
+run 10 ns
+#} End
+
+
+#{ Start
+force Clock 1
+force Reset 0
+force Go 1
+force {DataIn[7]} 0
+force {DataIn[6]} 0
+force {DataIn[5]} 0
+force {DataIn[4]} 0
+force {DataIn[3]} 0
+force {DataIn[2]} 1
+force {DataIn[1]} 0
+force {DataIn[0]} 1
+run 10 ns
+force Clock 0
+run 10 ns
+#} End
+
+
+
+
+
+#{ Start
+force Clock 1
+force Go 0
+force {DataIn[7]} 0
+force {DataIn[6]} 0
+force {DataIn[5]} 0
+force {DataIn[4]} 0
+force {DataIn[3]} 0
+force {DataIn[2]} 1
+force {DataIn[1]} 0
+force {DataIn[0]} 1
+run 10 ns
+force Clock 0
+run 10 ns
+#} End
+
+
+
+
+#{ Start
+force Clock 1
+force Go 1
+force {DataIn[7]} 0
+force {DataIn[6]} 0
+force {DataIn[5]} 0
+force {DataIn[4]} 0
+force {DataIn[3]} 0
+force {DataIn[2]} 1
+force {DataIn[1]} 0
+force {DataIn[0]} 0
+run 10 ns
+force Clock 0
+run 10 ns
+#} End
+
+
+
+
+#{ Start
+force Clock 1
+force Go 0
+force {DataIn[7]} 0
+force {DataIn[6]} 0
+force {DataIn[5]} 0
+force {DataIn[4]} 0
+force {DataIn[3]} 0
+force {DataIn[2]} 1
+force {DataIn[1]} 0
+force {DataIn[0]} 0
+run 10 ns
+force Clock 0
+run 10 ns
+#} End
+
+
+
+
+#{ Start
+force Clock 1
+force Go 0
+
+run 10 ns
+force Clock 0
+run 10 ns
+#} End
+
+#{ Start
+force Clock 1
+force Go 0
+
+run 10 ns
+force Clock 0
+run 10 ns
+#} End
+
+#{ Start
+force Clock 1
+force Go 0
+
+run 10 ns
+force Clock 0
+run 10 ns
+#} End
